@@ -1,0 +1,9 @@
+# directories
+.vscode/
+bin/
+env/
+__pycache__/
+
+# files
+*.xml
+*.mod
