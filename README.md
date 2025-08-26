@@ -18,10 +18,21 @@ This will put gl.xml in the root directory.
 ### Generate Bindings
 To generate the bindings, you can then run
 ```
-python gen_gl_fortran.py --xml /path/to/gl.xml --version 3.3 --profile core --out gl_bindings_33.f90 --strict-missing
+make
 ```
-If you used the generator script from above, then the path isn't necessary
+This will create a file called `gl_bindings_33.f90` in the root directory.  This can then be included in a fortran application to use OpenGL.  This runs the following python script:
 ```
-python gen_gl_fortran.py --xml gl.xml --version 3.3 --profile core --out gl_bindings_33.f90 --strict-missing
+python scripts/gen_gl_fortran.py --xml gl.xml --version 3.3 --profile core --out gl_bindings_33.f90 --strict-missing
 ```
-This will create a file called `gl_bindings_33.f90` in the root directory.  This can then be included in a fortran application to use OpenGL.
+If you would like to change any of the arguments then you can run with your modifications
+```
+python scripts/gen_gl_fortran.py --xml </path/to/gl.xml> --version <opengl-version> --profile <opengl-profile> --out <output-file-name> --strict-missing
+```
+
+### Running the demo
+There is a demo (the triangle) in the `demo` directory.  After generating the bindings, you can build and run the demo with
+```
+make demo
+make run
+```
+![triangle](https://github.com/jefferycoulter/fogl/blob/main/demo/img/triangle.png)
